@@ -11,6 +11,8 @@ public class CellPhoneApp {
     public static void main (String[] args ) {
         CellPhone iphone  = new CellPhone(123456789, "iPhone 12 Pro Max", "T-Mobile", 916-759-2872, "Pavel", 100);
 
+        CellPhone Samsung = new CellPhone(true);
+
         iphone.goOnFaceTime();
         iphone.goOnACall();
         System.out.println(iphone.getBattery());
@@ -20,6 +22,8 @@ public class CellPhoneApp {
 
 class CellPhone{
     //properties//
+    private boolean isOn;
+
     private long  serialNumber;
     private String model;
     private String carrier;
@@ -37,6 +41,14 @@ class CellPhone{
                 this.owner = owner;
                 this.battery = battery;
 
+    }
+
+    public boolean isOn() {
+        return isOn;
+    }
+
+    public  CellPhone(boolean isOn){
+        this.isOn = isOn;
     }
     public long  getSerialNumber(){
 
@@ -89,13 +101,21 @@ class CellPhone{
         this.battery -= 20;
     }
 
+    public void  sendText(){this.battery -= 1;}
+
+    public int sendText(int textsSent) {
+        this.battery -= textsSent*2;
+        return this.battery;
+
+    }
+
     public int getBattery() {
         return battery;
     }
 
-    public void setBattery(int battery) {
-        this.battery = battery;
-    }
+//    public void setBattery(int battery) {
+//        this.battery = battery;
+//    }
 
     public void  chargeBattery(){
          while (this.battery<101 ) {
@@ -103,6 +123,13 @@ class CellPhone{
              int i = this.battery++;
          }
     }
+    public void dial(String number){
+
+
+    }
 }
+
+
+//map.getDirections("")
 
 
